@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -9,11 +9,10 @@ import { AuthResponseData, LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   public title = 'Authorization';
-  public error = '';
   public isLoginMode = true;
-  //public error: string = null;
+  public error: string = null!;
 
   constructor(private loginService: LoginService, private router: Router) {}
 
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/profile']);
       },
       (errorResponse) => {
-        console.log(errorResponse);
         switch (errorResponse.error.error.message) {
           case 'EMAIL_EXISTS':
             this.error = 'The email address is already exists!';
@@ -54,15 +52,8 @@ export class LoginComponent implements OnInit {
             this.error = 'The password is invalid!';
             break;
         }
-        // this.error = "Something's gone wrong!";
       }
     );
     form.reset();
   }
-
-  // public logout() {
-  //   this.user.next(null);
-  // }
-
-  ngOnInit(): void {}
 }
