@@ -1,5 +1,8 @@
 # AngularTestTask
 
+You can try it here:
+https://moonlit-faun-722fa5.netlify.app/login
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
 ## Development server
